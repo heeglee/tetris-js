@@ -238,16 +238,19 @@ function rotate(matrix, dir) {
 }
 
 function update(time = 0) {
-    const deltaTime = time - lastTime;
-    lastTime = time;
-
-    dropCounter += deltaTime;
-    if (dropCounter > dropInterval) {
-        playerDrop();
+    if (player.isPlaying)
+    {
+        const deltaTime = time - lastTime;
+        lastTime = time;
+    
+        dropCounter += deltaTime;
+        if (dropCounter > dropInterval) {
+            playerDrop();
+        }
+    
+        draw();
+        animation = requestAnimationFrame(update);
     }
-
-    draw();
-    animation = requestAnimationFrame(update);
 }
 
 function updateScore() {
